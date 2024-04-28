@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>予算分配計算機</title>
+    <style>
+        .container {
+            width: 70%;
+            margin: 0 auto;
+            text-align: center; /* 全体を中央に寄せる */
+        }
+        input[type="text"] {
+            width: calc(50% - 60px);
+            padding: 10px;
+            margin: 10px 5px;
+            box-sizing: border-box;
+        }
+        label {
+            display: inline-block;
+            width: 45%;
+            margin-bottom: 10px;
+            text-align: right;
+        }
+        .input-group {
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>予算分配計算機</h2>
+        <label for="amount">金額を入力してください：</label>
+        <input type="text" id="amount" name="amount" required>
+        <div class="input-group">
+            <label for="previousSavings">固定費繰越残高：</label>
+            <input type="text" id="previousSavings" name="previousSavings">
+        </div>
+        <div class="input-group">
+            <label for="previousLivingExpense">生活費繰越残高：</label>
+            <input type="text" id="previousLivingExpense" name="previousLivingExpense">
+        </div>
+        <div class="input-group">
+            <label for="previousEntertainment">娯楽費繰越残高：</label>
+            <input type="text" id="previousEntertainment" name="previousEntertainment">
+        </div>
+        <div class="input-group">
+            <label for="previousGamingExpense">ゲーム費繰越残高：</label>
+            <input type="text" id="previousGamingExpense" name="previousGamingExpense">
+        </div>
+        <button onclick="calculate()">計算する</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculate() {
+            // 入力された金額と前月の繰越金額を取得
+            var amount = parseFloat(document.getElementById("amount").value);
+            var previousSavings = parseFloat(document.getElementById("previousSavings").value) || 0;
+            var previousLivingExpense = parseFloat(document.getElementById("previousLivingExpense").value) || 0;
+            var previousEntertainment = parseFloat(document.getElementById("previousEntertainment").value) || 0;
+            var previousGamingExpense = parseFloat(document.getElementById("previousGamingExpense").value) || 0;
+
+            // 各費目の金額を計算
+            var savings = amount * 0.5 + previousSavings;
+            var livingExpense = amount * 0.2 + previousLivingExpense;
+            var entertainment = amount * 0.15 + previousEntertainment;
+            var gamingExpense = amount * 0.15 + previousGamingExpense;
+
+            // 結果を表示
+            document.getElementById("result").innerHTML = `
+                <h3>貯金：${savings} 円</h3>
+                <h3>生活費：${livingExpense} 円</h3>
+                <h3>娯楽費：${entertainment} 円</h3>
+                <h3>ゲーム費：${gamingExpense} 円</h3>
+            `;
+        }
+    </script>
+</body>
+</html>
