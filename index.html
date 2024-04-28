@@ -49,7 +49,7 @@
 <body>
     <div class="container">
         <h2>予算分配計算機</h2>
-        <label for="amount">金額の入力</label>
+        <label for="amount">（手取-固定費）の入力</label>
         <input type="text" id="amount" name="amount" required>
         <div class="input-group">
             <label for="previousSavings">固定費繰越高</label>
@@ -89,7 +89,6 @@
             // 結果を表示
             //<h3>今月の使用可能金額</h3>
             document.getElementById("result").innerHTML = `
-                <h3>今月の使用可能金額：${availableAmount.toFixed(2)} 円</h3>
                 <h3>固定費：${savings} 円</h3>
                 <h3>生活費：${livingExpense} 円</h3>
                 <h3>娯楽費：${entertainment} 円</h3>
