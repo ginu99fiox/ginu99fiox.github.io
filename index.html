@@ -82,13 +82,15 @@
 
             // 各費目の金額を計算
             var savings = amount * 0.5 + previousSavings;
+            var koteihi = previousSavings + 10000;
             var livingExpense = amount * 0.2 + previousLivingExpense;
             var entertainment = amount * 0.15 + previousEntertainment;
             var gamingExpense = amount * 0.15 + previousGamingExpense;
 
             // 結果を表示
             document.getElementById("result").innerHTML = `
-                <h3>今月の使用可能固定費：${savings} 円</h3>
+                <h3>今月の貯金額：${savings} 円</h3>
+                <h3>今月の使用可能固定費：${koteihi} 円</h3>
                 <h3>今月の使用可能生活費：${livingExpense} 円</h3>
                 <h3>今月の使用可能娯楽費：${entertainment} 円</h3>
                 <h3>今月の使用可能ゲーム費：${gamingExpense} 円</h3>
